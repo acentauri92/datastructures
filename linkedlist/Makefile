@@ -6,7 +6,7 @@ CXX ?= g++
 SOURCE_DIR	:= ./
 BUILD_DIR	:= build
 OBJ_DIR		:= build/obj
-NAME		:= queue
+NAME		:= list
 
 #Search path for header files
 CFLAGS += 

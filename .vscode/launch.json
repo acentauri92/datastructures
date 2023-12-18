@@ -8,7 +8,7 @@
             "name": "queue Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/queue", // Update with your executable name
+            "program": "${workspaceFolder}/linkedlist/build/list", // Update with your executable name
             "args": [],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
