@@ -85,3 +85,80 @@ node* findTarget(list* pList, int target){
     }
 }
 
+void deleteFirst(list* pList){
+    node* current = NULL;
+    // No elements present
+    if(pList->sizeOfList == 0){
+        printf("Cannot delete. List empty\n");
+        return;
+    }
+    // Only one element present
+    if(pList->sizeOfList == 1){
+       current = pList->head;
+       pList->head = pList->tail = NULL;
+    }
+    // All other cases
+    else {
+        current = pList->head;
+        pList->head = pList->head->next;
+
+    }
+    free(current);
+    pList->sizeOfList--;
+}
+
+void deleteLast(list* pList){
+    node* current = NULL;
+    //If list empty
+    if(pList->sizeOfList == 0){
+        printf("Cannot delete. List empty\n");
+        return;
+    }
+    //If list has just one element
+    if(pList->sizeOfList == 1){
+        current = pList->tail;
+        pList->tail = pList->head = NULL;
+        free(current);
+    }
+    //All other cases
+    else {
+        current = pList->head;
+        //Loop till last but one element
+        while(current->next->next != NULL){
+            current = current->next;
+        }
+        pList->tail = current;
+        free(current->next);
+        current->next = NULL;
+    }
+}
+
+void deleteTarget(list* pList, int target){
+    node* current;
+    node* previous;
+    //Empty list
+    if(pList->sizeOfList == 0){
+        printf("Cannot delete. List empty\n");
+        return;  
+    }
+    else {
+        current = pList->head;
+        //Loop till target found and save previous node's address
+        while(current->data != target){
+            previous = current;
+            current = current->next;
+        }
+        // If target is in first Node
+        if(current == pList->head){
+            deleteFirst(pList);
+        }
+        // If target is in last Node
+        else if(current == pList->tail){
+            deleteLast(pList);
+        }
+        else{
+            previous->next = current->next;
+            free(current);
+        }
+    }
+}

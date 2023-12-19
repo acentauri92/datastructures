@@ -20,3 +20,6 @@ void insertAtTail(list* pList, int data);
 node* createNewNode(void);
 void printList(list* pList);
 node* findTarget(list* pList, int target);
+void deleteFirst(list* pList);
+void deleteLast(list* pList);
+void deleteTarget(list* pList, int target);

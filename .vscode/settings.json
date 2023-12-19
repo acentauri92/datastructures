@@ -2,6 +2,8 @@
     "files.associations": {
         "wait.h": "c",
         "cstdlib": "c",
-        "queue.h": "c"
+        "queue.h": "c",
+        "list.h": "c",
+        "__stddef_max_align_t.h": "c"
     }
 }
