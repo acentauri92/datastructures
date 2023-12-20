@@ -162,3 +162,33 @@ void deleteTarget(list* pList, int target){
         }
     }
 }
+
+void reverseList(list* pList){
+    node *previous, *current, *next;
+
+    if(pList->sizeOfList <= 1){
+        printf("Cannot reverse list. List empty/single element\n");
+        return;
+    }
+
+    else {
+        previous = NULL;
+        current = pList->head;
+        next = current->next;
+
+        while(1){
+            //Reverse the link
+            current->next = previous;
+            if(current == pList->tail)
+                break;
+            previous = current;
+            current = next;
+            next = next->next;
+        }
+    }
+
+    //Update head and tail ptrs
+    pList->tail = pList->head;
+    pList->head = current;
+    
+}

@@ -23,3 +23,4 @@ node* findTarget(list* pList, int target);
 void deleteFirst(list* pList);
 void deleteLast(list* pList);
 void deleteTarget(list* pList, int target);
+void reverseList(list* pList);
