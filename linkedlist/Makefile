@@ -26,7 +26,7 @@ all: $(BUILD_DIR)/$(NAME)
 
 #Build target
 $(BUILD_DIR)/$(NAME): $(COBJECTS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(COBJECTS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 
 #Build object files in the obj directory
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c | $(OBJ_DIR)
