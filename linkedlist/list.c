@@ -51,6 +51,8 @@ node* createNewNode(void){
         printf("Error: Unable to alloc memory\n");
         return NULL;
     }
+    /*Initialize links*/
+    newNode->next = newNode->previous = NULL;
     return newNode;
 }
 

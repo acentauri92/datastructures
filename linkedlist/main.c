@@ -5,32 +5,23 @@ list myLinkedList;
 int main(void){
     initList(&myLinkedList);
 
-    insertAtTail(&myLinkedList, 1);
-    insertAtTail(&myLinkedList, 2);
-    insertAtTail(&myLinkedList, 3);
-    insertAtTail(&myLinkedList, 4);
-    insertAtTail(&myLinkedList, 5);
-    insertAtTail(&myLinkedList, 6);
+    addFirst(&myLinkedList, 1);
+    addFirst(&myLinkedList, 2);
+    addFirst(&myLinkedList, 3);
+
+    addLast(&myLinkedList, 4);
+    addLast(&myLinkedList, 5);
+    addLast(&myLinkedList, 6);
 
     printList(&myLinkedList);
 
-    reverseList(&myLinkedList);
+    dListDeleteFirst(&myLinkedList);
     printList(&myLinkedList);
 
-    // deleteFirst(&myLinkedList);
-    // printList(&myLinkedList);
+    dListDeleteLast(&myLinkedList);
+    printList(&myLinkedList);
 
-    // deleteLast(&myLinkedList);
-    // printList(&myLinkedList);
-
-    // deleteTarget(&myLinkedList, 4);
-    // printList(&myLinkedList);
-
-    // deleteTarget(&myLinkedList, 2);
-    // printList(&myLinkedList);
-
-    // deleteTarget(&myLinkedList, 5);
-    // printList(&myLinkedList);
+    freeList(&myLinkedList);
 
     return 0;
 }

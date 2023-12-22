@@ -17,20 +17,19 @@ CFLAGS += -Wall -g
 #Linker flags
 LDFLAGS += 
 
-.PHONY: all $(NAME) clean
+COBJECTS := $(patsubst $(SOURCE_DIR)/%.c, $(OBJ_DIR)/%.o, \
+			$(wildcard $(SOURCE_DIR)/*.c))
+
+.PHONY: all $(NAME) clean leakcheck
 
 all: $(BUILD_DIR)/$(NAME)
 
 #Build target
-$(BUILD_DIR)/$(NAME): $(OBJ_DIR)/main.o $(OBJ_DIR)/$(NAME).o
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ_DIR)/main.o $(OBJ_DIR)/$(NAME).o -o $@
+$(BUILD_DIR)/$(NAME): $(COBJECTS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(COBJECTS) -o $@
 
 #Build object files in the obj directory
-$(OBJ_DIR)/$(NAME).o: $(SOURCE_DIR)/$(NAME).c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-#Build main
-$(OBJ_DIR)/main.o: main.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR):
@@ -41,6 +40,10 @@ $(OBJ_DIR):
 	
 clean:
 	rm -rf $(BUILD_DIR)
+
+leakcheck:
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all \
+	--show-reachable=yes $(BUILD_DIR)/$(NAME)
 
 
 

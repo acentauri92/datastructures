@@ -4,7 +4,8 @@
         "cstdlib": "c",
         "queue.h": "c",
         "list.h": "c",
-        "__stddef_max_align_t.h": "c"
+        "__stddef_max_align_t.h": "c",
+        "stdio.h": "c"
     },
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }
