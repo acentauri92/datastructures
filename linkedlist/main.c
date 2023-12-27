@@ -1,27 +1,21 @@
 #include "list.h"
 
-list myLinkedList;
+Circularlist myLinkedList;
 
 int main(void){
-    initList(&myLinkedList);
+    initCircularList(&myLinkedList);
 
-    addFirst(&myLinkedList, 1);
-    addFirst(&myLinkedList, 2);
-    addFirst(&myLinkedList, 3);
+    addNodeClist(&myLinkedList, 1);
+    addNodeClist(&myLinkedList, 2);
+    addNodeClist(&myLinkedList, 3);
+    addNodeClist(&myLinkedList, 4);
+    addNodeClist(&myLinkedList, 5);
+    printCircularList(&myLinkedList);
 
-    addLast(&myLinkedList, 4);
-    addLast(&myLinkedList, 5);
-    addLast(&myLinkedList, 6);
+    deleteNodeClist(&myLinkedList);
+    printCircularList(&myLinkedList);
 
-    printList(&myLinkedList);
-
-    dListDeleteFirst(&myLinkedList);
-    printList(&myLinkedList);
-
-    dListDeleteLast(&myLinkedList);
-    printList(&myLinkedList);
-
-    freeList(&myLinkedList);
-
+    deleteNodeClist(&myLinkedList);
+    printCircularList(&myLinkedList);
     return 0;
 }
