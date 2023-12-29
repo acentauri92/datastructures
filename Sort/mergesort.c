@@ -1,10 +1,10 @@
-// C Program to illustrate file opening
+/*Merge sort implementation*/
 #include <stdio.h>
 #include <stdlib.h>
  
-#define ASize   4
-#define BSize   7
-#define CSize   ( (ASize) + (BSize) )
+#define leftArraySize       4
+#define rightArraySize      7
+#define CombinedSize        ( (leftArraySize) + (rightArraySize) )
 
 int less(int a, int b){
     return (a < b);
@@ -47,6 +47,7 @@ int less(int a, int b){
     
     mergeSort(left, mid);
     mergeSort(right, arraySize - mid);
+    
     merge(array, left, mid, right, arraySize - mid);
 
     free(left);
