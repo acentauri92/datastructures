@@ -3,10 +3,14 @@ CC ?= gcc
 CXX ?= g++
 
 #Directories
-SOURCE_DIR	:= ./
+SOURCE_DIR	:= src
+INCLUDE_DIR := inc
 BUILD_DIR	:= build
 OBJ_DIR		:= build/obj
+TEST_DIR 	:= test 
 NAME		:= queue
+
+CSOURCES := $(wildcard $(SOURCE_DIR)/*.c)
 
 #Search path for header files
 CFLAGS += 
@@ -17,27 +21,32 @@ CFLAGS += -Wall -g
 #Linker flags
 LDFLAGS += 
 
-.PHONY: all $(NAME) clean
+COBJECTS := $(patsubst $(SOURCE_DIR)/%.c, $(OBJ_DIR)/%.o, $(CSOURCES))
+
+.PHONY: all $(NAME) clean test test_clean
 
 all: $(BUILD_DIR)/$(NAME)
 
 #Build target
-$(BUILD_DIR)/$(NAME): $(OBJ_DIR)/main.o $(OBJ_DIR)/$(NAME).o
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ_DIR)/main.o $(OBJ_DIR)/$(NAME).o -o $@
+$(BUILD_DIR)/$(NAME): $(COBJECTS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 
 #Build object files in the obj directory
-$(OBJ_DIR)/$(NAME).o: $(SOURCE_DIR)/$(NAME).c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-#Build main
-$(OBJ_DIR)/main.o: main.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
 $(BUILD_DIR):
 	mkdir $@
 
 $(OBJ_DIR):
 	mkdir -p $@
+
+#Run tests
+test:
+	make -C $(TEST_DIR)
+
+test_clean:
+	make -C $(TEST_DIR) clean
 	
 clean:
 	rm -rf $(BUILD_DIR)

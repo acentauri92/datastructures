@@ -11,15 +11,15 @@
 
 void initQueue(Queue_t* pQueue){
     pQueue->front = pQueue->rear = (SIZE - 1);
-};
+}
 
 int isQueueFull(Queue_t* pQueue){
     return ( (pQueue->rear + 1) % SIZE == pQueue->front);
-};
+}
 
 int isQueueEmpty(Queue_t* pQueue){
     return (pQueue->rear == pQueue->front);
-};
+}
 
 void enqueue(Queue_t* pQueue, int data){
     if(isQueueFull(pQueue)){
@@ -28,7 +28,7 @@ void enqueue(Queue_t* pQueue, int data){
     }
     pQueue->rear = (pQueue->rear + 1) % SIZE;
     pQueue->item[pQueue->rear] = data;
-};
+}
 
 int dequeue(Queue_t* pQueue){
     if(isQueueEmpty(pQueue)){
@@ -37,4 +37,4 @@ int dequeue(Queue_t* pQueue){
     }
     pQueue->front = (pQueue->front + 1) % SIZE;
     return (pQueue->item[pQueue->front]);
-};
+}
