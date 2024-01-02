@@ -18,4 +18,7 @@ void bTreeInOrderTrav(bTreeNode* pRoot);
 void bTreePreOrderTrav(bTreeNode* pRoot);
 void bTreePostOrderTrav(bTreeNode* pRoot);
 
+
+bTreeNode* bSearch(bTreeNode* pRoot, int target);
+
 #endif 

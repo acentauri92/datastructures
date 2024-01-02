@@ -16,7 +16,7 @@ OBJECTS := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SOURCES))
 .PHONY: all clean btree
 
 # Build targets (Directories are order only deps)
-$(BUILD_DIR)/btree: $(OBJ_DIR)/main.o $(OBJ_DIR)/btree.o
+$(BUILD_DIR)/btree: $(OBJECTS)
 	$(CC) $(LD_FLAGS) $^ -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)

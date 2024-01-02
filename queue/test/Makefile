@@ -8,7 +8,7 @@ TEST_BUILD_DIR	:= build
 CPPUTEST_HOME := $(TEST_DIR)/cpputest
 
 # Set variables needed by Cpputest helper Makefile.
-# See cpputest/build/MakefileWorker.mk
+# See ./cpputest/build/MakefileWorker.mk for info on these variabes.
 INCLUDE_DIRS	:=  $(PROJECT_DIR)/inc $(CPPUTEST_HOME)/include
 SRC_DIRS		:= $(PROJECT_DIR)/src
 TEST_SRC_DIRS	:= $(TEST_DIR)/src
