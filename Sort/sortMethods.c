@@ -54,3 +54,35 @@ int less(int a, int b){
     free(right);
 
  }
+
+ void swap(int* a, int* b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void selectionSort(int* array, int size){
+    for(int i = 0; i < size-1; i++){
+        //Take first index as min value
+        int minValue = i;
+
+        //Find min value
+        for(int j = i+1; j < size; j++){
+            if(array[j] < array[minValue]){
+                minValue = j;
+            }
+        }
+
+        swap(array + i, array + minValue);  
+    }
+}
+
+void bubbleSort(int* array, int size){
+    for(int i = 0; i < size; i++){
+        for(int j = 0; j < size-1-i; j++){
+            if(array[j] > array[j+1]){
+                swap(array + j, array + (j+1));
+            }
+        }
+    }
+}

@@ -13,7 +13,6 @@ bTreeNode* bSearch(bTreeNode* pRoot, int target){
     else if(target > pRoot->key){
         bSearch(pRoot->right, target);
     }
-
     else{
         bSearch(pRoot->left, target);
     }
