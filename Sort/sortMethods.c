@@ -86,3 +86,14 @@ void bubbleSort(int* array, int size){
         }
     }
 }
+
+void insertionSort(int* array, int size){
+    int i = 0;
+    for(i = 1; i < size; i++){
+        int j = i;
+        while (j>=0 && (array[j] < array[j-1]) ){
+            swap(array + j, array +(j-1));
+            j--;
+        } 
+    }
+}
