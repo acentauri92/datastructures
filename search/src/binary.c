@@ -21,7 +21,7 @@ int binarySearchRec(int* array, int lower, int upper, int target){
         lower = middle + 1;
     }
     /*Recursive call*/
-    binarySearchRec(array, lower, upper, target);
+    return binarySearchRec(array, lower, upper, target);
 }
 
 /*Binarch search using iteration*/
