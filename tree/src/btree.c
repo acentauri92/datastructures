@@ -35,6 +35,23 @@ int bTreeInsert(bTreeNode** ppRoot, int key){
     return 0;
 }
 
+
+bTreeNode* insertToBST(bTreeNode* root, int data){
+    if(root == NULL){
+        root = (bTreeNode*) malloc(sizeof(bTreeNode));
+        root->left = root->right = NULL;
+        return root;
+    }
+
+    else if(data > root->key){
+        root->right = insertToBST(root->right, data);
+    }
+    else{
+        root->left = insertToBST(root->left, data);
+    }
+    return root;
+}
+
 void bTreeBuild(bTreeNode** ppRoot, int* sortedArray, int size){
     for(int i = 0; i < size; i++){
         bTreeInsert(ppRoot, sortedArray[i]);
